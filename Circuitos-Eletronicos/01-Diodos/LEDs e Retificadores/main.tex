@@ -1,0 +1,129 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+
+\geometry{margin=2.5cm}
+
+\title{Lista de Exercícios 2: Retificação e Dispositivos Optoeletrônicos}
+\author{Monitoria de Eletrônica Analógica}
+\date{Abril de 2026}
+
+% Configura a legenda para ter o rótulo e o texto em negrito.
+\captionsetup[figure]{font=bf}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \textit{Observação: Questões extraídas e adaptadas de R. Boylestad, "Dispositivos Eletrônicos e Teoria de Circuitos", Capítulos 1 e 2.}
+\end{center}
+
+\section*{Formulário de Apoio}
+
+\begin{itemize}
+    \item \textbf{Tensão de Pico e RMS:} $V_m = V_{rms} \cdot \sqrt{2}$
+    \item \textbf{Retificador de Meia-Onda (Ideal):} $V_{dc} \approx 0,318 V_m$
+    \item \textbf{Retificador de Onda Completa (Ideal):} $V_{dc} \approx 0,636 V_m$
+    \item \textbf{Energia do Fóton / Gap:} $E_g = \frac{h \cdot c}{\lambda} \approx \frac{1240\text{ eV}\cdot\text{nm}}{\lambda}$
+    \item \textbf{PIV (Ponte):} $PIV \geq V_m$
+\end{itemize}
+
+\hrule
+\section*{Questões Selecionadas}
+
+\begin{enumerate}[label=\textbf{Questão \arabic*:}]
+
+    % --- PARTE 1: RETIFICAÇÃO (4 QUESTÕES) ---
+    
+    \item Considerando um diodo ideal, esboce $v_i$, $v_d$ e $i_d$ para o retificador de meia-onda da \textbf{Figura 1}. A entrada é uma forma de onda senoidal com frequência de $60\text{ Hz}$. Determine o valor de pico da entrada, os valores máximo e mínimo da tensão sobre o diodo e o valor máximo da corrente pelo diodo.
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.55\textwidth]{Fotos/Figura 2.168.png}
+        \caption{Retificador de meia-onda com fonte de polarização.}
+        \label{fig:2.168}
+    \end{figure}
+
+    \item Para a configuração da \textbf{Figura 2}, com uma carga $R_L = 10\text{ k}\Omega$ aplicada, esboce as formas de onda da tensão na carga ($v_L$) e da corrente na carga ($i_L$). Considere o diodo ideal e $V_{CC} = 2\text{ V}$.
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.55\textwidth]{Fotos/Figura 2.169.png}
+        \caption{Configuração com carga $R_L$ adicional.}
+        \label{fig:2.169}
+    \end{figure}
+
+    \item Um retificador em ponte de onda completa com uma entrada senoidal de $120\text{ V rms}$ possui um resistor de carga de $1\text{ k}\Omega$. Se forem empregados diodos de silício ($V_K = 0,7\text{ V}$):
+    \begin{enumerate}[label=\alph*)]
+        \item Qual será a tensão CC disponível na carga?
+        \item Determine a especificação de PIV necessária para cada diodo.
+    \end{enumerate}
+
+    \item Determine $v_o$, a especificação de PIV exigida para cada diodo e a corrente máxima através de cada diodo na configuração da \textbf{Figura 3}. Considere diodos ideais e pico de $100\text{ V}$.
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{Fotos/Figura 2.173.png}
+        \caption{Retificador em ponte com carga resistiva.}
+        \label{fig:2.173}
+    \end{figure}
+
+    % --- PARTE 2: LEDs E FÍSICA (4 QUESTÕES) ---
+
+    \item Dado que a energia do gap ($E_g$) é de $0,67\text{ eV}$ para o germânio, determine o comprimento de onda ($\lambda$) da resposta solar máxima para esse material. Os fótons nesse comprimento de onda têm um nível de energia inferior ou superior ao visível?
+
+    \item Compare os valores teóricos típicos de tensão de joelho ($V_K$) para o silício, germânio e um LED azul. Por que a cor da luz emitida pelo LED está diretamente relacionada à sua tensão de condução?
+
+    \item Se a intensidade luminosa em uma disposição angular de $0^\circ$ for de $3,0\text{ mcd}$ para um dispositivo LED, em que ângulo ela será de $0,75\text{ mcd}$? Em que ângulo a redução da intensidade luminosa é maior do que $50\%$?
+
+    \item Analise o ganho de eficiência em LEDs:
+    \begin{enumerate}[label=\alph*)]
+        \item Qual é o aumento percentual na eficiência relativa se a corrente de pico for aumentada de $5$ para $10\text{ mA}$?
+        \item Repita o item anterior aumentando de $30\text{ para } 35\text{ mA}$.
+        \item Em que ponto da curva o ganho torna-se desprezível para aumentos adicionais de corrente?
+    \end{enumerate}
+
+\end{enumerate}
+
+\newpage
+\section*{Gabarito Detalhado}
+
+\begin{enumerate}[label=\textbf{Questão \arabic*:}, leftmargin=*]
+
+    \item \textbf{Retificador com Bias (Fig. 1):} O diodo conduz apenas quando $v_i > 2\text{ V}$. Quando $v_i < 2\text{ V}$, o diodo está em corte e $v_d = v_i - 2\text{ V}$. O valor mínimo de $v_d$ (pico negativo) ocorre em $-(V_m + 2\text{ V})$.
+    
+    \item \textbf{Carga em Paralelo (Fig. 2):} Quando o diodo conduz ($v_i > 2\text{ V}$), $v_L = v_i$. A corrente $i_L$ segue o formato da tensão, com pico $I_{L,p} = V_{L,p} / 10\text{ k}\Omega$. Note que a fonte de $2\text{ V}$ atua como o nível de ceifamento.
+
+    \item \textbf{Ponte 120V rms:} 
+    \begin{itemize}
+        \item $V_m = 120\sqrt{2} \approx 169,7\text{ V}$. 
+        \item $V_{L,p} = 169,7 - 1,4 = 168,3\text{ V}$. 
+        \item $V_{dc} = 0,636 \cdot 168,3 \approx \mathbf{107,04\text{ V}}$.
+        \item $PIV = V_{L,p} + 0,7 = \mathbf{169,7\text{ V}}$.
+    \end{itemize}
+
+    \item \textbf{Análise da Figura 3:} $v_o$ é uma onda retificada completa com pico de $100\text{ V}$. $PIV = \mathbf{100\text{ V}}$. $I_{max} = 100\text{ V} / 2,2\text{ k}\Omega \approx \mathbf{45,45\text{ mA}}$.
+
+    \item \textbf{Cálculo de Comprimento de Onda:} 
+    $\lambda = 1240 / 0,67 \approx \mathbf{1850,7\text{ nm}}$. Como $\lambda > 700\text{ nm}$, o nível de energia é \textbf{inferior} ao visível (região do infravermelho).
+
+    \item \textbf{Comparação de Materiais:} $V_K(Ge) \approx 0,3\text{V}$, $V_K(Si) \approx 0,7\text{V}$, $V_K(LED Blue) \approx 3,0\text{V}$. A tensão depende de $E_g$; fótons de maior energia (azul/UV) exigem maior queda de tensão para a recombinação.
+
+    \item \textbf{Intensidade Angular:} $0,75$ é $25\%$ da intensidade máxima. Consultando curvas típicas de distribuição espacial, isso ocorre geralmente em ângulos próximos a $\mathbf{40^\circ \text{ a } 50^\circ}$. A redução $> 50\%$ ocorre para ângulos superiores ao ângulo de meia-intensidade (tipicamente $30^\circ$ em LEDs diretivos).
+
+    \item \textbf{Eficiência e Corrente:} 
+    \begin{itemize}
+        \item \textbf{a) e b)} O aumento percentual é maior em correntes baixas ($5 \to 10\text{ mA}$) devido à inclinação da curva de eficiência. 
+        \item \textbf{c)} A eficiência tende a saturar em correntes elevadas ($> 30\text{ mA}$), onde aumentos na corrente de pico geram ganhos mínimos de intensidade luminosa relativa.
+    \end{itemize}
+
+\end{enumerate}
+\end{document}
